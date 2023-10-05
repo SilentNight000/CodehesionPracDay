@@ -29,6 +29,7 @@ export const loginUser = async (username: string, password: string) => {
         };
         const response = await api.post('', formData, config);
         // console.log("No error");
+        localStorage.setItem('access_token', response.data.access_token);
         return response;
     } catch (error) {
         // console.log("Error");
