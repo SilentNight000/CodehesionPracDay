@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const CATEGORIES_URL = "https://edeaf-api-staging.azurewebsites.net/v1/admin/categories";
+const WORDS_URL = "https://edeaf-api-staging.azurewebsites.net/v1/admin/Words";
 
-export const getCategories = async () => {
+export const getWords = async () => {
   const accessToken = getAccessToken();
 
   const config = {
@@ -13,10 +13,10 @@ export const getCategories = async () => {
   };
 
   try {
-    const response = await axios.get(CATEGORIES_URL, config);
+    const response = await axios.get(WORDS_URL, config);
 
-    // console.log(response.data);
-    return response.data;
+    // console.log("Words: ", response.data.data);
+    return response.data.data;
   } catch (error) {
     console.error("Error fetching categories:", error);
     throw error;

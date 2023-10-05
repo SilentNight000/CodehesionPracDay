@@ -27,10 +27,8 @@ const Register = () => {
         const response = await registerUser(formData.name, formData.surname, formData.email, formData.role);
         console.log("Submitted data:", response);
 
-        if (response && response.data.access_token) {
-          console.log("navigating...");
+          alert("Register Success");
           navigate("/home");
-        }
       } catch (error) {
         console.log("Login failed", error);
       }
@@ -45,9 +43,9 @@ const Register = () => {
             <label htmlFor="Name">Name</label>
             <input
               type="text"
-              id="Name"
-              name="Name"
-              value={formData.Name}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
             />
@@ -85,7 +83,7 @@ const Register = () => {
               required
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">Register</button>
         </form>
       </div>
     </>
