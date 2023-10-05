@@ -23,10 +23,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await loginUser(formData.username, formData.password);
-      console.log("Submitted data:", response);
+      // console.log("Submitted data:", response);
 
       if (response && response.data.access_token) {
-        console.log("navigating...");
+        // console.log("navigating...");
         navigate("/home");
       }
     } catch (error) {

@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios';
 
-const LOGIN_URL = "https://edeaf-api-staging.azurewebsites.net/connect/token";
+const LOGIN_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const api = axios.create({
     baseURL: LOGIN_URL,
@@ -27,7 +27,7 @@ export const loginUser = async (username: string, password: string) => {
             "Content-Type": "application/x-www-form-urlencoded",
           },
         };
-        const response = await api.post('', formData, config);
+        const response = await api.post('/connect/token', formData, config);
         // console.log("No error");
         localStorage.setItem('access_token', response.data.access_token);
         return response;

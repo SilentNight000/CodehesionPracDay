@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const REGISTER_URL = "https://edeaf-api-staging.azurewebsites.net/v1/admin/Users";
+const REGISTER_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const api = axios.create({
   baseURL: REGISTER_URL,
@@ -24,7 +24,7 @@ export const registerUser = async (name: string, surname: string, email: string,
             },
         };
 
-        const response = await api.post("", sendData, config);
+        const response = await api.post("/v1/admin/Users", sendData, config);
 
         console.log("Register success: ", response);
         return response;

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const WORDS_URL = "https://edeaf-api-staging.azurewebsites.net/v1/admin/Words";
+const WORDS_URL = import.meta.env.VITE_APP_BASE_URL + "/v1/admin/Words";
 
 export const getWords = async () => {
   const accessToken = getAccessToken();

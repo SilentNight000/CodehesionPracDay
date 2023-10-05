@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
 
   const handleRegistrationClick = () => {
-    console.log("Registering navigation...");
+    // console.log("Registering navigation...");
     navigate("/register");
   }
 

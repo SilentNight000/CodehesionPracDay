@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CATEGORIES_URL = "https://edeaf-api-staging.azurewebsites.net/v1/admin/categories";
+const CATEGORIES_URL = import.meta.env.VITE_APP_BASE_URL + "/v1/admin/categories";
 
 export const getCategories = async () => {
   const accessToken = getAccessToken();
