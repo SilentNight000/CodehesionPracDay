@@ -4,6 +4,8 @@ import Login from "./Login";
 import Home from './Home';
 import Register from "./Register";
 import Words from "./Words";
+import Profile from "./Profile";
+import UpdateProfile from "./UpdateProfile";
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/words/:id" element={<Words />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/updateProfile" element={<UpdateProfile />} />
       </Routes>
     </BrowserRouter>
   );

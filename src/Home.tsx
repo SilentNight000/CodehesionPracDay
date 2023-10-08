@@ -29,12 +29,18 @@ const Home = () => {
     navigate(`/words/${id}`);
   }
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+  }
+
   return (
     <>
       <div className="home-container">
         <h1>Home Page</h1>
         <h2>Register User:</h2>
         <button onClick={handleRegistrationClick}>Register User</button>
+        <h2>Profile Page:</h2>
+        <button onClick={handleProfileClick}>Profile</button>
         <h2>Categories:</h2>
         <ul>
           {categories.map((category) => (
