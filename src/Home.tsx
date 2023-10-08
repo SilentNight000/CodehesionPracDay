@@ -48,7 +48,7 @@ const Home = () => {
         <h2>Categories:</h2>
         <ul>
           {categories.map((category) => (
-            <li key={category.id} onClick={() => handleCategoryClick(category.id)}>{category.name}</li>
+            <li key={category.id} onClick={() => handleCategoryClick(category.id)} style={{ cursor: "pointer", textDecoration: "underline" }}>{category.name}</li>
           ))}
         </ul>
 

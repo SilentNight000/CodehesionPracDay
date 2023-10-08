@@ -1,20 +1,19 @@
 import axios from "axios";
 
-const UPDATE_USER_URL = import.meta.env.VITE_APP_BASE_URL;
+const CREATE_TAG_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const api = axios.create({
-  baseURL: UPDATE_USER_URL,
+  baseURL: CREATE_TAG_URL,
 });
 
-export const updateCurrentUser = async (name: string, lastName: string, email: string) => {
+export const createTag = async (name: string, color: string) => {
     try {
-        const accessToken = getAccessToken();
-
         const sendData = {
             name: name,
-            lastName: lastName,
-            email: email,
+            color: color,
         }
+
+        const accessToken = getAccessToken();
 
         const config = {
             headers: {
@@ -23,13 +22,13 @@ export const updateCurrentUser = async (name: string, lastName: string, email: s
             },
         };
 
-        const response = await api.put("/v1/admin/Users/current", sendData, config);
+        const response = await api.post("/v1/admin/Tags", sendData, config);
 
-        console.log("Update success: ", response);
+        console.log("Creation success: ", response);
         return response;
     }
     catch (error) {
-        console.log("Update failed: ", error);
+        console.log("Creation failed: ", error);
         throw error;
     }
 }

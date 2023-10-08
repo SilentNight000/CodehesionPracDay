@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getWords } from "./services/getWords";
 import { getCategories } from "./services/getCategories";
+import { addWord } from "./services/addWord";
 
 const Words = () => {
   const { id } = useParams();
@@ -9,6 +10,9 @@ const Words = () => {
   const [categories, setCategories] = useState<{id:number,name:string}[]>([]);
   const [filteredWords, setFilteredWords] = useState<{ id: number; name: string; categories: { id: number ; name: string }[] }[]>([]);
   const [filteredCategory, setFilteredCategory ] = useState<{id:number,name:string}[]>([]);
+
+  const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
+  const [newWordID, setNewWordID] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -43,10 +47,36 @@ const Words = () => {
 
   const categoryName = filteredCategory.length > 0 ? filteredCategory[0].name : "";
 
+  const handleCreateClick = () => {
+    setIsCreateFormVisible(true);
+  }
+
+  const handleFormSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    const wordId = parseInt(newWordID, 10);
+    // console.log(wordId);
+
+    try {
+      const response = await addWord(Number(id), wordId);
+      console.log("Submitted data:", response);
+
+      alert("Word Added");
+
+      setNewWordID("");
+      setIsCreateFormVisible(false);
+
+      window.location.reload();
+    } catch (error) {
+      console.log("Adding failed", error);
+      alert("Word Not Added");
+    }
+  };
+
   return (
     <>
       <div className="words-container">
-        <h1>Category: { categoryName }</h1>
+        <h1>{categoryName}</h1>
         <h2>Words:</h2>
         <ul>
           {filteredWords.map((word) => (
@@ -55,6 +85,24 @@ const Words = () => {
             </li>
           ))}
         </ul>
+
+        {isCreateFormVisible ? (
+          <form onSubmit={handleFormSubmit}>
+            <div>
+              <label htmlFor="newWordID">Choose Word ID:</label>
+              <input
+                type="number"
+                id="newWordID"
+                value={newWordID}
+                onChange={(e) => setNewWordID(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit">Create New</button>
+          </form>
+        ) : (
+          <button onClick={handleCreateClick}>Create</button>
+        )}
       </div>
     </>
   );
