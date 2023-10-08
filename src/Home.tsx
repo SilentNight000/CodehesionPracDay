@@ -33,6 +33,10 @@ const Home = () => {
     navigate("/profile");
   }
 
+  const handleTagClick = () => {
+    navigate("/tags");
+  }
+
   return (
     <>
       <div className="home-container">
@@ -47,6 +51,9 @@ const Home = () => {
             <li key={category.id} onClick={() => handleCategoryClick(category.id)}>{category.name}</li>
           ))}
         </ul>
+
+        <h2>Tags:</h2>
+        <button onClick={handleTagClick}>Tags</button>
       </div>
     </>
   );

@@ -30,7 +30,9 @@ const Register = () => {
           alert("Register Success");
           navigate("/home");
       } catch (error) {
-        console.log("Login failed", error);
+        console.log("Register failed", error);
+
+        alert("Register Failed");
       }
     };
 

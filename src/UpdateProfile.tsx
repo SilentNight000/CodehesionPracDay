@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
+import { updateCurrentUser } from "./services/updateCurrentUser";
+import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
       name: "",
       lastName: "",
@@ -16,8 +20,18 @@ const UpdateProfile = () => {
       });
     };
 
-    const handleSubmit = () => {
-      console.log("Youve changed it");
+    const handleSubmit = async (e: { preventDefault: () => void }) => {
+      e.preventDefault();
+      try {
+        const response = await updateCurrentUser(formData.name, formData.lastName, formData.email);
+        console.log("Submitted data:", response);
+
+          alert("Update Success");
+          navigate("/profile");
+      } catch (error) {
+        console.log("Update failed", error);
+        alert("Update failed");
+      }
     };
 
     return (

@@ -6,6 +6,7 @@ import Register from "./Register";
 import Words from "./Words";
 import Profile from "./Profile";
 import UpdateProfile from "./UpdateProfile";
+import Tags from "./Tags";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/words/:id" element={<Words />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/updateProfile" element={<UpdateProfile />} />
+        <Route path="/tags" element={<Tags />} />
       </Routes>
     </BrowserRouter>
   );
