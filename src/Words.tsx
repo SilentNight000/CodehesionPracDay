@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getWords } from "./services/getWords";
 import { getCategories } from "./services/getCategories";
 import { addWord } from "./services/addWord";
@@ -13,6 +13,8 @@ const Words = () => {
 
   const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
   const [newWordID, setNewWordID] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -73,9 +75,16 @@ const Words = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigate("/home");
+  }
+
   return (
     <>
       <div className="words-container">
+        <button className="back-button" onClick={handleGoBack}>
+          &#8592; Back
+        </button>
         <h1>{categoryName}</h1>
         <h2>Words:</h2>
         <ul>

@@ -34,8 +34,15 @@ const UpdateProfile = () => {
       }
     };
 
+    const handleGoBack = () => {
+      navigate("/profile");
+    };
+
     return (
       <div className="updateProfile-container">
+        <button className="back-button" onClick={handleGoBack}>
+          &#8592; Back
+        </button>
         <h1>Profile Update</h1>
         <h2>Change Details:</h2>
         <form onSubmit={handleSubmit}>

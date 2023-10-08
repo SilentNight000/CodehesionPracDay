@@ -3,6 +3,7 @@ import { getTags } from "./services/getTags";
 import { createTag } from "./services/createTag";
 import { updateTag } from "./services/updateTag";
 import { deleteTag } from "./services/deleteTag";
+import { useNavigate } from "react-router-dom";
 
 const Tags = () => {
     const [ tags, setTags ] = useState<{id: number, name: string, color: string}[]>([]);
@@ -10,6 +11,8 @@ const Tags = () => {
     const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
     const [newTagName, setNewTagName] = useState("");
     const [newTagColor, setNewTagColor] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -78,9 +81,15 @@ const Tags = () => {
         window.location.reload();
     }
 
+    const handleGoBack = () => {
+      navigate("/home");
+    };
 
     return (
       <div className="tags-container">
+        <button className="back-button" onClick={handleGoBack}>
+          &#8592; Back
+        </button>
         <h1>Tags</h1>
         <ul>
           {tags.map((tag) => (

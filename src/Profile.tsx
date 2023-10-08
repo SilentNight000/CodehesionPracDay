@@ -35,18 +35,25 @@ const Profile = () => {
       navigate("/profile/updateProfile");
     }
 
+    const handleGoBack = () => {
+      navigate("/home");
+    };
+
 
     return (
       <>
         <div className="profile-container">
+          <button className="back-button" onClick={handleGoBack}>
+            &#8592; Back
+          </button>
           <h1>Profile Page:</h1>
-
           <h2>Current Details:</h2>
-          <label>Name: {userName}</label><br></br>
+          <label>Name: {userName}</label>
+          <br></br>
           <label>Surname: {userSurname}</label> <br></br>
-          <label>Email: {userEmail}</label><br></br>
-
-          <button  onClick={handleUpdateClick}>Update Profile</button>
+          <label>Email: {userEmail}</label>
+          <br></br>
+          <button onClick={handleUpdateClick}>Update Profile</button>
         </div>
       </>
     );

@@ -36,9 +36,16 @@ const Register = () => {
       }
     };
 
+    const handleGoBack = () => {
+      navigate("/home");
+    };
+
   return (
     <>
       <div className="register-container">
+        <button className="back-button" onClick={handleGoBack}>
+          &#8592; Back
+        </button>
         <h1>Register Page</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
